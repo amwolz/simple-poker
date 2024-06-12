@@ -1187,11 +1187,10 @@ class Orbit {
     }
     async initialize() {
         let i = 0;
-        for (let player of players) {
-            let hand = new Hand(i);
+        for (let i = 0; i < 100; i++) {
+            let hand = new Hand(i % 5);
             await hand.initialize();
             // this shifts the blind
-            i++;
         }
 
 
@@ -1410,5 +1409,5 @@ function test() {
 
     
 }
-test();
-// main();
+// test();
+main();
