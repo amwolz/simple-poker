@@ -309,7 +309,7 @@ class Player {
         this.tie = 0;
         this.allIn = false;
         this.rank = 0;
-        this.finalCards;
+       this.moneyi = 0;
         Frontend.changeTextContent(this.id + 'p1', this.money);
         Frontend.changeTextContent(this.id + 'p2', this.betThisRound);
 
@@ -530,6 +530,7 @@ class Hand {
             p.allIn = false;
             p.rank = 0;
             p.finalCards = [];
+            p.moneyi = p.money;
         }
         
     }
@@ -700,7 +701,7 @@ class Hand {
         }
         this.call = 0;
         let playersInRound = this.activePlayers.filter(p => p.inRound == true);
-        console.log('-----------');
+        console.log('hit')
         console.log(playersInRound.length);
         let rankedPlayers = [];
         if (playersInRound.length <= 1) {
@@ -1126,6 +1127,8 @@ class Hand {
         }
         
         for (let i = 0; i < playerArr.length; i++) {
+            playerArr[i].wonThisHand = playerArr[i].money - playerArr[i].moneyi;
+            console.log('hit')
             // update player images
             Frontend.changeImage("ranked" + (i + 1).toString(), playerArr[i].imgURL)
             // display player cards
